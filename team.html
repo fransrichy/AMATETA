@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Our Dynamic Team</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-neon': '#06B6D4', // Tailwind cyan-500
+                        'dark-bg': '#0A1428', // Deeper, more futuristic dark blue
+                        'dark-card': '#1C2940', // Slate-800 equivalent
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0) scale(1.0)' },
+                            '50%': { transform: 'translateY(-3px) scale(1.01)' },
+                        },
+                        'neon-pulse': {
+                            '0%, 100%': { textShadow: '0 0 5px #06B6D4' },
+                            '50%': { textShadow: '0 0 10px #06B6D4, 0 0 20px #06B6D4' },
+                        },
+                        'spin-slow': { to: { transform: 'rotate(360deg)' } },
+                    },
+                    animation: {
+                        'float-live': 'float 3s ease-in-out infinite',
+                        'neon-pulse-slow': 'neon-pulse 4s infinite alternate',
+                        'spin-slow': 'spin-slow 4s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        body {
+            background-color: #0A1428;
+            color: #E2E8F0;
+        }
+        /* Scroll Reveal base state */
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Dynamic Header Link Styling */
+        .nav-link { 
+            text-shadow: 0 0 1px #E2E8F0; 
+            @apply text-lg font-semibold transition duration-300;
+        }
+        .nav-link:hover { text-shadow: 0 0 5px #06B6D4, 0 0 10px #06B6D4; }
+        .nav-link.active { @apply text-primary-neon border-b-2 border-primary-neon pb-1; }
+        
+        /* Custom Shadow for Depth and Shading (Requested) */
+        .shadow-futuristic {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(6, 182, 212, 0.3); /* Deep shadow + neon glow */
+        }
+        .shadow-futuristic-hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 40px rgba(6, 182, 212, 0.5); /* Deeper shadow + brighter glow */
+        }
+
+        /* Team Card Specific Styles: Fading & Neon Border */
+        .team-member-card {
+            @apply relative overflow-hidden p-6 bg-dark-card rounded-2xl shadow-futuristic text-center transition duration-500 transform hover:-translate-y-1 hover:border-primary-neon/50 border border-transparent;
+        }
+        .team-member-card:hover .team-bio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .team-bio-overlay {
+            /* FADE CARD EFFECT */
+            @apply absolute inset-0 bg-dark-bg/95 backdrop-blur-sm flex flex-col justify-center items-center p-6 text-white opacity-0 transition-all duration-700 transform translate-y-full rounded-2xl border-4 border-primary-neon/0 hover:border-primary-neon;
+        }
+
+        /* Skills Tags */
+        .skills-tag {
+            @apply inline-block bg-primary-neon/20 text-primary-neon text-xs font-medium px-2.5 py-0.5 rounded-full mr-1 mb-1 border border-primary-neon/50;
+        }
+        /* Clean Button/Icon Style */
+        .team-social-icon { 
+            @apply text-2xl mx-3 text-gray-400 hover:text-primary-neon transition-colors duration-200 transform hover:scale-125;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-200">
+
+    <a href="https://wa.me/264853441248" target="_blank" aria-label="Chat on WhatsApp"
+       class="fixed bottom-6 right-6 z-50 p-4 bg-green-500 rounded-full shadow-2xl transition duration-300 transform hover:scale-110 border-4 border-green-300/50 animation-float-live group">
+        <i class="fab fa-whatsapp text-white text-3xl transition duration-300 group-hover:text-4xl group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"></i>
+    </a>
+
+    <header id="sticky-header" class="sticky top-0 z-40 bg-dark-bg/95 backdrop-blur-md border-b border-primary-neon/40 shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-10 sm:h-12 w-auto rounded-md transition duration-300 drop-shadow-lg filter drop-shadow-[0_0_4px_#06B6D4]">
+                </a>
+            </div>
+
+            <nav class="hidden lg:block">
+                <ul class="flex space-x-8 xl:space-x-12 font-semibold">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="team.html" class="nav-link active">Our Team</a></li>
+                    <li><a href="website-development.html" class="nav-link">Web Dev</a></li>
+                    <li><a href="flyer-design.html" class="nav-link">Flyer Templates</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button id="mobile-menu-toggle" class="lg:hidden text-3xl text-primary-neon hover:text-white transition duration-200 transform hover:rotate-6 active:scale-90">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-nav-overlay" class="lg:hidden fixed inset-0 bg-dark-bg/95 backdrop-blur-sm z-50 transform translate-x-full transition-transform duration-500 ease-in-out">
+            <button id="close-mobile-menu" class="absolute top-4 right-4 text-4xl text-primary-neon hover:text-white">&times;</button>
+            <nav class="mobile-nav-menu flex flex-col items-center justify-center h-full space-y-8">
+                <a href="index.html" class="nav-link-mobile text-3xl hover:text-primary-neon">Home</a>
+                <a href="about.html" class="nav-link-mobile text-3xl hover:text-primary-neon">About</a>
+                <a href="team.html" class="nav-link-mobile text-3xl text-primary-neon">Our Team</a>
+                <a href="website-development.html" class="nav-link-mobile text-3xl hover:text-primary-neon">Web Dev</a>
+                <a href="flyer-design.html" class="nav-link-mobile text-3xl hover:text-primary-neon">Templates</a>
+                <a href="portfolio.html" class="nav-link-mobile text-3xl hover:text-primary-neon">Portfolio</a>
+                <a href="contact.html" class="nav-link-mobile text-3xl hover:text-primary-neon">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero-section text-center py-20 px-4 bg-dark-card/50 border-b border-primary-neon/40 shadow-xl scroll-reveal">
+            <div class="container mx-auto">
+                <h1 class="text-5xl sm:text-6xl font-extrabold mb-4 text-white uppercase tracking-wider animation-neon-pulse-slow">
+                    The AMATETA Crew: Innovators & Builders
+                </h1>
+                <p class="text-xl max-w-3xl mx-auto font-light text-gray-300 drop-shadow-md">
+                    Driven by shared values and diverse expertise, our team is the engine behind every successful project.
+                </p>
+                <div class="mt-8">
+                    <a href="#management" class="btn-hero bg-primary-neon/70 hover:bg-primary-neon text-dark-bg text-base font-bold rounded-full px-6 py-2 transition duration-300">
+                        Explore Our Experts <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="management" class="team-section py-16 md:py-24 px-4">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-12 text-center text-primary-neon/90 scroll-reveal">Core Leadership & Management</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="team-member-card text-center scroll-reveal">
+                        <img src="images/Francis.jpg" alt="Frans N. Haufiku" class="w-32 h-32 object-cover mx-auto mb-4 rounded-full border-4 border-primary-neon/50">
+                        <h3 class="text-2xl font-bold text-white">Frans N. Haufiku</h3>
+                        <p class="text-primary-neon font-semibold mb-2 text-lg">Founder & CEO</p>
+                        <div class="flex justify-center flex-wrap mb-4">
+                            <span class="skills-tag">Full Stack Dev</span>
+                            <span class="skills-tag">IT Strategy</span>
+                            <span class="skills-tag">Graphic Design</span>
+                        </div>
+                        
+                        <div class="social-icons mt-4">
+                            <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://wa.me/264853441248" target="_blank" aria-label="WhatsApp" class="team-social-icon text-green-500 hover:text-green-300"><i class="fab fa-whatsapp"></i></a>
+                            <a href="contact.html" aria-label="Contact" class="team-social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+
+                        <div class="team-bio-overlay">
+                            <i class="fas fa-quote-left text-primary-neon mb-3 text-3xl"></i>
+                            <p class="text-base italic">"Innovation is the bridge between a challenge and a revolutionary solution."</p>
+                            <a href="about.html" class="mt-3 text-sm text-primary-neon border-b border-primary-neon/50 hover:text-cyan-400">Read Vision</a>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card text-center scroll-reveal" style="transition-delay: 0.2s;">
+                        <img src="images/SACHY.jpg" alt="Shikongo Sakaria" class="w-32 h-32 object-cover mx-auto mb-4 rounded-full border-4 border-primary-neon/50">
+                        <h3 class="text-2xl font-bold text-white">Shikongo Sakaria</h3>
+                        <p class="text-primary-neon font-semibold mb-2 text-lg">Technical Manager & IT Technician</p>
+                        <div class="flex justify-center flex-wrap mb-4">
+                            <span class="skills-tag">Network Security</span>
+                            <span class="skills-tag">Hardware Support</span>
+                            <span class="skills-tag">Troubleshooting</span>
+                        </div>
+                        
+                        <div class="social-icons mt-4">
+                            <a href="#" target="_blank" aria-label="LinkedIn" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" aria-label="Instagram" class="team-social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank" aria-label="Email" class="team-social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+
+                        <div class="team-bio-overlay">
+                            <i class="fas fa-shield-alt text-primary-neon mb-3 text-3xl"></i>
+                            <p class="text-base italic">"Keeping systems secure and running smoothly—that's the foundation of reliability."</p>
+                            <span class="mt-3 text-sm text-gray-400">Years of Expertise: 5+</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card text-center scroll-reveal" style="transition-delay: 0.4s;">
+                        <img src="images/Teopo.jpg" alt="Shipanga Teopolina" class="w-32 h-32 object-cover mx-auto mb-4 rounded-full border-4 border-primary-neon/50">
+                        <h3 class="text-2xl font-bold text-white">Shipanga Teopolina</h3>
+                        <p class="text-primary-neon font-semibold mb-2 text-lg">Marketing & Sales Lead</p>
+                        <div class="flex justify-center flex-wrap mb-4">
+                            <span class="skills-tag">Digital Strategy</span>
+                            <span class="skills-tag">Client Relations</span>
+                            <span class="skills-tag">Stock Control</span>
+                        </div>
+                        
+                        <div class="social-icons mt-4">
+                            <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank" aria-label="Instagram" class="team-social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank" aria-label="LinkedIn" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" aria-label="Phone" class="team-social-icon"><i class="fas fa-phone"></i></a>
+                        </div>
+
+                        <div class="team-bio-overlay">
+                            <i class="fas fa-chart-line text-primary-neon mb-3 text-3xl"></i>
+                            <p class="text-base italic">"Transforming our innovation into measurable market success and client delight."</p>
+                            <span class="mt-3 text-sm text-gray-400">Awards: Top Sales Quarter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="extended-team-section py-16 px-4 bg-dark-card/50">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-12 text-center text-white scroll-reveal">Extended Team & Strategic Talent</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    
+                    <div class="team-member-card text-center scroll-reveal">
+                        <img src="images/placeholder_collaborator.jpg" alt="Software Developer Collaborator" class="w-32 h-32 object-cover mx-auto mb-4 rounded-full border-4 border-primary-neon/50 filter grayscale transition duration-500 group-hover:grayscale-0">
+                        <h3 class="text-2xl font-bold text-white">[Collaborator Name]</h3>
+                        <p class="text-primary-neon font-semibold mb-2 text-lg">Software Developer Collaborator</p>
+                        <div class="flex justify-center flex-wrap mb-4">
+                            <span class="skills-tag">Backend Dev</span>
+                            <span class="skills-tag">Database Mgmt</span>
+                            <span class="skills-tag">Cloud Architecture</span>
+                        </div>
+                        
+                        <div class="social-icons mt-4">
+                            <a href="#" target="_blank" aria-label="LinkedIn" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" aria-label="Email" class="team-social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                        
+                        <div class="team-bio-overlay">
+                            <i class="fas fa-code text-primary-neon mb-3 text-3xl"></i>
+                            <p class="text-base italic">"Building robust, scalable back-end solutions that power our clients' digital dreams."</p>
+                            <span class="mt-3 text-sm text-gray-400">Focus: Efficiency & Reliability</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card text-center scroll-reveal" style="transition-delay: 0.2s;">
+                        <img src="images/placeholder_intern.jpg" alt="Business Intern Name" class="w-32 h-32 object-cover mx-auto mb-4 rounded-full border-4 border-primary-neon/50 filter grayscale transition duration-500 group-hover:grayscale-0">
+                        <h3 class="text-2xl font-bold text-white">[Intern Name]</h3>
+                        <p class="text-primary-neon font-semibold mb-2 text-lg">Business Administrative Intern</p>
+                        <div class="flex justify-center flex-wrap mb-4">
+                            <span class="skills-tag">Administration</span>
+                            <span class="skills-tag">Client Support</span>
+                            <span class="skills-tag">Finance Support</span>
+                        </div>
+
+                        <div class="social-icons mt-4">
+                            <a href="#" target="_blank" aria-label="LinkedIn" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" aria-label="Email" class="team-social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+
+                        <div class="team-bio-overlay">
+                            <i class="fas fa-user-tie text-primary-neon mb-3 text-3xl"></i>
+                            <p class="text-base italic">"Dedicated to operational excellence, ensuring our projects run on time and on budget."</p>
+                            <span class="mt-3 text-sm text-gray-400">Motto: Detail-Oriented</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-center text-lg text-gray-500 mt-12 scroll-reveal">
+                    *Please replace placeholder names and images with real staff details for a genuine representation.
+                </p>
+            </div>
+        </section>
+        
+        <section class="culture-section py-20 px-4 scroll-reveal">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-6 text-white"><i class="fas fa-handshake text-primary-neon mr-3"></i> Our Work Culture</h2>
+                <p class="text-xl max-w-3xl mx-auto mb-10 text-gray-400">
+                    We foster an environment where **innovation, collaboration, and continuous learning** thrive. We're more than a team—we're a creative hub.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-dark-card rounded-2xl shadow-futuristic transition duration-500 hover:scale-[1.03]">
+                        <i class="fas fa-lightbulb text-5xl text-primary-neon mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Innovation First</h3>
+                        <p class="text-sm text-gray-400">We dedicate time for experiments, regular training, and mastering the latest tech tools.</p>
+                    </div>
+                    <div class="p-6 bg-dark-card rounded-2xl shadow-futuristic transition duration-500 hover:scale-[1.03]">
+                        <i class="fas fa-users-viewfinder text-5xl text-primary-neon mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">United Teamwork</h3>
+                        <p class="text-sm text-gray-400">We celebrate success together, providing peer support and mentorship across all departments.</p>
+                    </div>
+                    <div class="p-6 bg-dark-card rounded-2xl shadow-futuristic transition duration-500 hover:scale-[1.03]">
+                        <i class="fas fa-seedling text-5xl text-primary-neon mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Growth Mindset</h3>
+                        <p class="text-sm text-gray-400">Committed to local talent development and leveraging technology for sustainable growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section text-center py-20 px-4 bg-dark-card/50 border-t border-b border-primary-neon/20 scroll-reveal">
+            <div class="container mx-auto">
+                <h2 class="text-3xl sm:text-5xl font-extrabold mb-4 text-white">Ready to Shape the Future with Us?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto font-light text-gray-400">
+                    If you share our passion for technology and design, we want to hear from you.
+                </p>
+                <a href="contact.html" class="inline-block px-8 py-3 bg-primary-neon text-dark-bg font-bold rounded-full text-lg uppercase tracking-wider transition duration-300 transform hover:scale-105 shadow-futuristic hover:shadow-futuristic-hover group">
+                    View Open Positions <i class="fas fa-arrow-right ml-2 transition duration-300 group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-enhanced pt-16 pb-8 px-4 bg-dark-card border-t border-primary-neon/40 scroll-reveal">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16 pb-10 border-b border-primary-neon/30">
+                <div class="col-span-2 md:col-span-1">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Logo" class="h-10 sm:h-12 w-auto mb-4 filter drop-shadow-[0_0_5px_#06B6D4]">
+                    <p class="text-sm text-gray-400">We are a top-tier technology and design firm, delivering innovative digital solutions that drive real-world business results.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-bold mb-4 text-white text-lg border-b-2 border-primary-neon/50 w-fit">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="index.html" class="footer-link-item"><i class="fas fa-home mr-2 text-primary-neon"></i>Home</a></li>
+                        <li><a href="website-development.html" class="footer-link-item"><i class="fas fa-code mr-2 text-primary-neon"></i>Web Dev</a></li>
+                        <li><a href="flyer-design.html" class="footer-link-item"><i class="fas fa-paint-brush mr-2 text-primary-neon"></i>Templates</a></li>
+                        <li><a href="portfolio.html" class="footer-link-item"><i class="fas fa-th-large mr-2 text-primary-neon"></i>View Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-bold mb-4 text-white text-lg border-b-2 border-primary-neon/50 w-fit">Company</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="about.html" class="footer-link-item"><i class="fas fa-building mr-2 text-primary-neon"></i>About Us</a></li>
+                        <li><a href="team.html" class="footer-link-item"><i class="fas fa-users-cog mr-2 text-primary-neon"></i>Our Team</a></li>
+                        <li><a href="contact.html" class="footer-link-item"><i class="fas fa-comment-dots mr-2 text-primary-neon"></i>Get in Touch</a></li>
+                        <li><a href="#" class="footer-link-item"><i class="fas fa-shield-alt mr-2 text-primary-neon"></i>Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="font-bold mb-4 text-white text-lg border-b-2 border-primary-neon/50 w-fit">Connect</h4>
+                    <p class="text-sm mb-4"><i class="fas fa-phone-alt mr-2 text-primary-neon"></i> +264 85 344 1248</p>
+                    <p class="text-sm mb-4"><i class="fas fa-envelope mr-2 text-primary-neon"></i> info@amateta.com</p>
+                    <p class="text-sm mb-4"><i class="fas fa-map-marker-alt mr-2 text-primary-neon"></i> Windhoek, Namibia</p>
+
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank" aria-label="Facebook" class="social-icon-footer group">
+                            <i class="fab fa-facebook-f group-hover:text-blue-500"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" class="social-icon-footer group">
+                            <i class="fab fa-linkedin-in group-hover:text-blue-400"></i>
+                        </a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank" aria-label="Instagram" class="social-icon-footer group">
+                            <i class="fab fa-instagram group-hover:text-pink-500"></i>
+                        </a>
+                        <a href="https://wa.me/264853441248" target="_blank" aria-label="WhatsApp" class="social-icon-footer group">
+                            <i class="fab fa-whatsapp group-hover:text-green-500"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center mt-8 pt-4">
+                <p class="text-sm text-gray-500">&copy; 2024 AMATETA Techs & Designs. All Rights Reserved. | <span class="text-primary-neon">Digital Solutions Engineered.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .footer-link-item { @apply text-gray-400 hover:text-primary-neon transition duration-200 block transform hover:translate-x-1; }
+        .social-icon-footer { @apply text-2xl text-primary-neon transition duration-300 transform hover:scale-125 hover:rotate-2 filter drop-shadow-[0_0_5px_#06B6D4]; }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+            // Mobile Menu Logic
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('translate-x-full');
+                mobileNavOverlay.classList.add('translate-x-0');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileNavOverlay.classList.add('translate-x-full');
+                mobileNavOverlay.classList.remove('translate-x-0');
+            });
+
+            document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNavOverlay.classList.add('translate-x-full');
+                    mobileNavOverlay.classList.remove('translate-x-0');
+                });
+            });
+
+            // Scroll Reveal Animation Logic
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            scrollRevealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-neon': '#06B6D4', // Tailwind cyan-500
+                        'dark-bg': '#0A1428', 
+                        'dark-card': '#1C2940', 
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0) scale(1.0)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)' },
+                            '50%': { transform: 'translateY(-5px) scale(1.05)', boxShadow: '0 8px 20px rgba(6, 182, 212, 0.4)' },
+                        },
+                        'neon-pulse': {
+                            '0%, 100%': { textShadow: '0 0 5px #06B6D4', transform: 'scale(1)' },
+                            '50%': { textShadow: '0 0 10px #06B6D4, 0 0 20px #06B6D4', transform: 'scale(1.05)' },
+                        },
+                        'icon-wave': {
+                            '0%, 100%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(1deg)' },
+                            '75%': { transform: 'rotate(-1deg)' },
+                        },
+                        'shimmer': {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        'press': {
+                            '0%, 100%': { transform: 'scale(1) translateY(0)' },
+                            '50%': { transform: 'scale(0.98) translateY(2px)' },
+                        },
+                         'fade-in-up': {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'float-live': 'float 3s ease-in-out infinite',
+                        'neon-pulse-slow': 'neon-pulse 4s infinite alternate',
+                        'icon-wobble': 'icon-wave 2s infinite',
+                        'shimmer-slow': 'shimmer 5s linear infinite',
+                        'press-effect': 'press 0.3s ease-in-out',
+                        'fade-in': 'fade-in-up 0.8s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    <style>
+        body {
+            background-color: #0A1428;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif; /* Ensuring Inter is used */
+        }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        .nav-link.nav-item { text-shadow: 0 0 1px #E2E8F0; }
+        .nav-link.nav-item:hover { text-shadow: 0 0 5px #06B6D4, 0 0 10px #06B6D4; }
+        
+        /* Custom Shadow for Depth */
+        .shadow-futuristic {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(6, 182, 212, 0.3); /* Deep shadow + neon glow */
+        }
+        .shadow-futuristic-hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 40px rgba(6, 182, 212, 0.5); /* Deeper shadow + brighter glow */
+        }
+        
+        /* Utility for content cards */
+        .detail-card {
+            @apply bg-dark-card p-6 md:p-10 rounded-xl shadow-futuristic transition duration-300 hover:border-primary-neon border-2 border-transparent;
+        }
+
+        /* Form styling for dark mode */
+        .form-input-dark {
+             @apply w-full p-3 rounded-md border border-primary-neon/30 bg-dark-bg/50 text-white placeholder-gray-500 focus:ring-primary-neon focus:border-primary-neon transition duration-200;
+        }
+
+        /* Map Container */
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Shared Button Styles */
+        .btn-base {
+            @apply inline-block px-8 py-3 font-semibold text-lg uppercase tracking-wider transition duration-300 transform hover:scale-[1.05];
+        }
+
+        .btn-hero {
+            @apply btn-base bg-primary-neon text-dark-bg hover:bg-cyan-400;
+        }
+        
+        .btn-primary {
+            @apply btn-base bg-primary-neon text-dark-bg hover:bg-cyan-400;
+        }
+
+        .btn-secondary {
+            @apply btn-base bg-transparent border-2 border-primary-neon text-primary-neon hover:bg-primary-neon hover:text-dark-bg;
+        }
+        
+        /* Footer Link Styles */
+        .footer-link-item {
+            @apply text-gray-400 hover:text-primary-neon transition duration-200 block transform hover:translate-x-1;
+        }
+        
+        /* Footer Social Icon Styles */
+        .social-icon-footer {
+            @apply text-2xl text-primary-neon transition duration-300 transform hover:scale-125 hover:rotate-2 filter drop-shadow-[0_0_5px_#06B6D4];
+        }
+        
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-200">
+
+    <a href="https://wa.me/264853441248" target="_blank" aria-label="Chat on WhatsApp"
+       class="fixed bottom-6 right-6 z-50 p-4 bg-green-500 rounded-full shadow-2xl transition duration-300 transform hover:scale-110 border-4 border-green-300/50 animation-float-live group">
+        <i class="fab fa-whatsapp text-white text-3xl transition duration-300 group-hover:text-4xl group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"></i>
+    </a>
+
+    <!-- Header (Copied from services.html) -->
+    <header id="sticky-header" class="sticky top-0 z-40 bg-dark-bg/95 backdrop-blur-md border-b border-primary-neon/40 shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-10 sm:h-12 w-auto rounded-md transition duration-300 drop-shadow-lg filter drop-shadow-[0_0_4px_#06B6D4]">
+                </a>
+            </div>
+
+            <nav class="hidden lg:block">
+                <ul class="flex space-x-8 xl:space-x-12 font-semibold">
+                    <li><a href="index.html" class="nav-link nav-item">Home</a></li>
+                    <li><a href="services.html" class="nav-link nav-item">Services</a></li> 
+                    <li><a href="about.html" class="nav-link nav-item">About</a></li>
+                    <li><a href="team.html" class="nav-link nav-item">Our Team</a></li>
+                    <li><a href="website-development.html" class="nav-link nav-item">Web Dev</a></li>
+                    <li><a href="flyer-design.html" class="nav-link nav-item">Flyer Templates</a></li>
+                    <li><a href="portfolio.html" class="nav-link nav-item">Portfolio</a></li>
+                    <!-- MARKING CONTACT AS ACTIVE -->
+                    <li><a href="contact.html" class="nav-link nav-item text-primary-neon border-b-2 border-primary-neon pb-1">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button id="mobile-menu-toggle" class="lg:hidden text-3xl text-primary-neon hover:text-white transition duration-200 transform hover:rotate-6 active:scale-90">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-nav-overlay" class="lg:hidden fixed inset-0 bg-dark-bg/95 backdrop-blur-sm z-50 transform translate-x-full transition-transform duration-500 ease-in-out">
+            <button id="close-mobile-menu" class="absolute top-4 right-4 text-4xl text-primary-neon hover:text-white">&times;</button>
+            <nav class="mobile-nav-menu flex flex-col items-center justify-center h-full space-y-8">
+                <a href="index.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">Home</a>
+                <a href="services.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">Services</a>
+                <a href="about.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">About</a>
+                <a href="team.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">Our Team</a>
+                <a href="website-development.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">Web Dev</a>
+                <a href="flyer-design.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">Templates</a>
+                <a href="portfolio.html" class="nav-link-mobile text-3xl hover:text-primary-neon transition duration-200">Portfolio</a>
+                <a href="contact.html" class="nav-link-mobile text-3xl text-primary-neon transition duration-200">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Contact Hero Section -->
+        <section class="relative h-[40vh] sm:h-[50vh] flex items-center justify-center text-center overflow-hidden">
+            <!-- Background effects matching services.html -->
+            <div class="absolute inset-0 bg-[url('images/Tech-Background.jpg')] bg-cover bg-center bg-fixed opacity-40 blur-sm"></div>
+            <div class="absolute inset-0 bg-dark-bg opacity-70 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-primary-neon opacity-20 mix-blend-overlay"></div>
+
+            <div class="container mx-auto px-4 z-10 p-6 scroll-reveal animation-fade-in">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 text-white uppercase tracking-wider animation-neon-pulse-slow">
+                    Get in <span class="text-primary-neon">Touch</span>
+                </h1>
+                <p class="text-lg sm:text-xl mb-8 max-w-3xl mx-auto font-light text-gray-300 drop-shadow-md">
+                    We're ready to discuss your next project. Reach out through any of the channels below.
+                </p>
+                <a href="#contact-form" class="btn-primary px-5 py-2 text-base rounded-full shadow-futuristic hover:shadow-futuristic-hover group">
+                    Send a Message <i class="fas fa-arrow-down ml-2 transition-transform duration-300 group-hover:translate-y-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Form and Info Grid -->
+        <section id="contact-form" class="py-16 md:py-24 px-4 scroll-reveal">
+            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Contact Form Container -->
+                <div class="detail-card">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-primary-neon">Send Us a Message</h2>
+                    
+                    <!-- Formspree action retained -->
+                    <form action="https://formspree.io/f/xrbaowob" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-lg font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe"
+                                class="form-input-dark">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg font-medium mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com"
+                                class="form-input-dark">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-lg font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Project Inquiry"
+                                class="form-input-dark">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-lg font-medium mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell us about your needs..."
+                                class="form-input-dark"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-4 rounded-xl shadow-futuristic hover:shadow-futuristic-hover active:animate-press-effect group">
+                            Send Secure Message <i class="fas fa-paper-plane ml-2 transition duration-300 group-hover:translate-x-1"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information and Map Container -->
+                <div class="space-y-12">
+                    <div class="detail-card">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-primary-neon">Contact Information</h2>
+                        <div class="space-y-6 text-lg text-gray-300">
+                            <p class="flex items-center group">
+                                <i class="fas fa-phone-alt text-primary-neon mr-4 text-xl transition-transform duration-300 group-hover:scale-110"></i>
+                                <a href="tel:+264853441248" class="hover:text-white transition duration-200">+264 85 344 1248</a>
+                            </p>
+                            <p class="flex items-center group">
+                                <i class="fas fa-envelope text-primary-neon mr-4 text-xl transition-transform duration-300 group-hover:scale-110"></i>
+                                <!-- Using the correct email from the footer/context -->
+                                <a href="mailto:info@amateta.com" class="hover:text-white transition duration-200">info@amateta.com</a>
+                            </p>
+                            <p class="flex items-center group">
+                                <i class="fab fa-whatsapp text-primary-neon mr-4 text-xl transition-transform duration-300 group-hover:scale-110"></i>
+                                <a href="https://wa.me/264853441248" target="_blank" class="hover:text-white transition duration-200">Chat with us on WhatsApp</a>
+                            </p>
+                            <p class="flex items-center group">
+                                <i class="fas fa-map-marker-alt text-primary-neon mr-4 text-xl transition-transform duration-300 group-hover:scale-110"></i>
+                                Windhoek, Namibia
+                            </p>
+                            <p class="flex items-center group">
+                                <i class="fas fa-business-time text-primary-neon mr-4 text-xl transition-transform duration-300 group-hover:scale-110"></i>
+                                Mon - Fri: 8:00 AM - 5:00 PM (CAT)
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Container -->
+                    <div class="detail-card p-0">
+                        <h3 class="text-2xl font-bold p-6 pb-0 text-primary-neon/90">Find Us on the Map</h3>
+                        <div class="map-container mt-4">
+                             <!-- Responsive Google Map Embed -->
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d355746.5165980064!2d16.63660373407987!3d-22.5694247858482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c0b1f1f1f1f1f1f%3A0x1f1f1f1f1f1f1f1f!2sWindhoek%2C%20Namibia!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section (Copied from services.html) -->
+        <section class="cta-section text-center py-20 px-4 bg-dark-card/50 border-t border-b border-primary-neon/20 scroll-reveal">
+            <div class="container mx-auto">
+                <h2 class="text-3xl sm:text-5xl font-extrabold mb-4 text-white">Ready to Pioneer Your Digital Future?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto font-light text-gray-400">
+                    Connect with our experts today for a strategy session. Let's build something extraordinary together.
+                </p>
+                <!-- Links to contact.html, but this is contact.html, so it links back to the form -->
+                <a href="#contact-form" class="btn-hero bg-primary-neon hover:bg-cyan-400 text-dark-bg font-bold group rounded-xl shadow-futuristic hover:shadow-futuristic-hover active:animate-press-effect">
+                    Start Your Project Now <i class="fas fa-hand-pointer ml-2 transition duration-300 group-hover:text-2xl group-hover:text-dark-bg"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Copied from services.html) -->
+    <footer class="footer-enhanced pt-16 pb-8 px-4 bg-dark-card border-t border-primary-neon/40 scroll-reveal">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16 pb-10 border-b border-primary-neon/30">
+                <div class="col-span-2 md:col-span-1">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Logo" class="h-10 sm:h-12 w-auto mb-4 filter drop-shadow-[0_0_5px_#06B6D4]">
+                    <p class="text-sm text-gray-400">We are a top-tier technology and design firm, delivering innovative digital solutions that drive real-world business results.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-bold mb-4 text-white text-lg border-b-2 border-primary-neon/50 w-fit">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="services.html" class="footer-link-item"><i class="fas fa-microchip mr-2 text-primary-neon animate-icon-wobble"></i>Services Hub</a></li>
+                        <li><a href="website-development.html" class="footer-link-item"><i class="fas fa-code mr-2 text-primary-neon animate-icon-wobble"></i>Web Dev</a></li>
+                        <li><a href="flyer-design.html" class="footer-link-item"><i class="fas fa-paint-brush mr-2 text-primary-neon animate-icon-wobble"></i>Templates</a></li>
+                        <li><a href="portfolio.html" class="footer-link-item"><i class="fas fa-th-large mr-2 text-primary-neon animate-icon-wobble"></i>View Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-bold mb-4 text-white text-lg border-b-2 border-primary-neon/50 w-fit">Company</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="about.html" class="footer-link-item"><i class="fas fa-building mr-2 text-primary-neon animate-icon-wobble"></i>About Us</a></li>
+                        <li><a href="team.html" class="footer-link-item"><i class="fas fa-users-cog mr-2 text-primary-neon animate-icon-wobble"></i>Our Team</a></li>
+                        <li><a href="contact.html" class="footer-link-item"><i class="fas fa-comment-dots mr-2 text-primary-neon animate-icon-wobble"></i>Get in Touch</a></li>
+                        <li><a href="#" class="footer-link-item"><i class="fas fa-shield-alt mr-2 text-primary-neon animate-icon-wobble"></i>Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="font-bold mb-4 text-white text-lg border-b-2 border-primary-neon/50 w-fit">Connect</h4>
+                    <p class="text-sm mb-4"><i class="fas fa-phone-alt mr-2 text-primary-neon"></i> +264 85 344 1248</p>
+                    <p class="text-sm mb-4"><i class="fas fa-envelope mr-2 text-primary-neon"></i> info@amateta.com</p>
+                    <p class="text-sm mb-4"><i class="fas fa-map-marker-alt mr-2 text-primary-neon"></i> Windhoek, Namibia</p>
+
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank" aria-label="Facebook" class="social-icon-footer group">
+                            <i class="fab fa-facebook-f group-hover:text-blue-500"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" class="social-icon-footer group">
+                            <i class="fab fa-linkedin-in group-hover:text-blue-400"></i>
+                        </a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank" aria-label="Instagram" class="social-icon-footer group">
+                            <i class="fab fa-instagram group-hover:text-pink-500"></i>
+                        </a>
+                        <a href="https://wa.me/264853441248" target="_blank" aria-label="WhatsApp" class="social-icon-footer group">
+                            <i class="fab fa-whatsapp group-hover:text-green-500"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center mt-8 pt-4">
+                <p class="text-sm text-gray-500">&copy; 2024 AMATETA Techs & Designs. All Rights Reserved. | <span class="text-primary-neon">Digital Solutions Engineered.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JS Logic for Mobile Menu and Scroll Reveal
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+            // Mobile Menu Logic
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('translate-x-full');
+                mobileNavOverlay.classList.add('translate-x-0');
+            });
+
+            closeMobileMenu.addEventListener('click', () => {
+                mobileNavOverlay.classList.add('translate-x-full');
+                mobileNavOverlay.classList.remove('translate-x-0');
+            });
+
+            // Close mobile menu on nav-link click
+            document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNavOverlay.classList.add('translate-x-full');
+                    mobileNavOverlay.classList.remove('translate-x-0');
+                });
+            });
+
+
+            // Scroll Reveal Animation Logic (Simple Intersection Observer)
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            });
+
+            scrollRevealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
